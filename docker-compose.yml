@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  guildedrosekata.api:
+    image: guildedrosekata.api
+    build:
+      context: ./GuildedRoseKata.Api
+      dockerfile: Dockerfile
