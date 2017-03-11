@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuildedRoseKata.Api", "Guil
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{DC7FFF30-95CB-4689-999F-F130B6930FEC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuildedRoseKata.Service", "GuildedRoseKata.Service\GuildedRoseKata.Service.csproj", "{1320FB42-AC4A-4890-B7A8-1012193F65FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuildedRoseKata.UnitTests", "GuildedRoseKata.UnitTests\GuildedRoseKata.UnitTests.csproj", "{EBCE49B5-5080-4104-A8CB-072EA235A9B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9278E3F8-9B5E-48A9-A8F7-3BF68C0689F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +27,19 @@ Global
 		{DC7FFF30-95CB-4689-999F-F130B6930FEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC7FFF30-95CB-4689-999F-F130B6930FEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC7FFF30-95CB-4689-999F-F130B6930FEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1320FB42-AC4A-4890-B7A8-1012193F65FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1320FB42-AC4A-4890-B7A8-1012193F65FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1320FB42-AC4A-4890-B7A8-1012193F65FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1320FB42-AC4A-4890-B7A8-1012193F65FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBCE49B5-5080-4104-A8CB-072EA235A9B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBCE49B5-5080-4104-A8CB-072EA235A9B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBCE49B5-5080-4104-A8CB-072EA235A9B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBCE49B5-5080-4104-A8CB-072EA235A9B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EBCE49B5-5080-4104-A8CB-072EA235A9B6} = {9278E3F8-9B5E-48A9-A8F7-3BF68C0689F8}
 	EndGlobalSection
 EndGlobal
