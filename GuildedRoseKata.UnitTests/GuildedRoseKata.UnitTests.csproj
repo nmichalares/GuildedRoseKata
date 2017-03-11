@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GuildedRoseKata.Models\GuildedRoseKata.Models.csproj" />
     <ProjectReference Include="..\GuildedRoseKata.Service\GuildedRoseKata.Service.csproj" />
   </ItemGroup>
 

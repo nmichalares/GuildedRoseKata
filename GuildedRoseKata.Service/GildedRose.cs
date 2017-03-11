@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GuildedRoseKata.Models;
+using System;
 using System.Collections.Generic;
 
 namespace GuildedRoseKata.Service
@@ -88,15 +89,5 @@ namespace GuildedRoseKata.Service
         }
 
     }
-
-    public class Item
-    {
-        public string Name { get; set; }
-
-        public int SellIn { get; set; }
-
-        public int Quality { get; set; }
-    }
-
 }
 

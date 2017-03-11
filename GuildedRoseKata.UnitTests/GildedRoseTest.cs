@@ -2,6 +2,7 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GuildedRoseKata.Service;
 using System.Collections.Generic;
+using GuildedRoseKata.Models;
 
 namespace GuildedRoseKata.UnitTests
 {
