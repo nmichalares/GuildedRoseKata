@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GuildedRoseKata.Models
+﻿namespace GuildedRoseKata.Models
 {
     public class Item
     {

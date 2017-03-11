@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9278E3F8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuildedRoseKata.Models", "GuildedRoseKata.Models\GuildedRoseKata.Models.csproj", "{689CEC4C-C320-4D62-90D8-453EF7A311BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuildedRoseKata.Data", "GuildedRoseKata.Data\GuildedRoseKata.Data.csproj", "{6032BB26-1224-4E66-BE67-AA6E6DF4DCB6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{689CEC4C-C320-4D62-90D8-453EF7A311BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{689CEC4C-C320-4D62-90D8-453EF7A311BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{689CEC4C-C320-4D62-90D8-453EF7A311BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6032BB26-1224-4E66-BE67-AA6E6DF4DCB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6032BB26-1224-4E66-BE67-AA6E6DF4DCB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6032BB26-1224-4E66-BE67-AA6E6DF4DCB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6032BB26-1224-4E66-BE67-AA6E6DF4DCB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

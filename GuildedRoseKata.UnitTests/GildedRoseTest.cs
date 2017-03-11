@@ -1,15 +1,17 @@
-using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GuildedRoseKata.Service;
-using System.Collections.Generic;
+using GuildedRoseKata.Api.Controllers;
+using GuildedRoseKata.Data.Interfaces;
 using GuildedRoseKata.Models;
+using GuildedRoseKata.Service;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using System.Collections.Generic;
 
 namespace GuildedRoseKata.UnitTests
 {
     [TestClass]
     public class GildedRoseTest
     {
-        IList<Item> TestItems;
+        List<Item> TestItems;
         [TestInitialize()]
         public void TestInit()
         {
@@ -21,9 +23,11 @@ namespace GuildedRoseKata.UnitTests
         {
             TestItems.Add(new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80 });
 
-            var service = new GildedRose(TestItems);
-
-            service.UpdateQuality();
+            var mockData = new Mock<IItems>();
+            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
+            var controller = new DailyOperationController();
+            
+            controller.Post();
 
             Assert.AreEqual(0, TestItems[0].SellIn);
             Assert.AreEqual(80, TestItems[0].Quality);
@@ -34,9 +38,11 @@ namespace GuildedRoseKata.UnitTests
         {
             TestItems.Add(new Item { Name = "Aged Brie", SellIn = 2, Quality = 0 });
 
-            var service = new GildedRose(TestItems);
+            var mockData = new Mock<IItems>();
+            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
+            var controller = new DailyOperationController();
 
-            service.UpdateQuality();
+            controller.Post();
 
             Assert.AreEqual(1, TestItems[0].Quality);
             Assert.AreEqual(1, TestItems[0].SellIn);
@@ -47,9 +53,11 @@ namespace GuildedRoseKata.UnitTests
         {
             TestItems.Add(new Item { Name = "Aged Brie", SellIn = 0, Quality = 0 });
 
-            var service = new GildedRose(TestItems);
+            var mockData = new Mock<IItems>();
+            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
+            var controller = new DailyOperationController();
 
-            service.UpdateQuality();
+            controller.Post();
 
             Assert.AreEqual(2, TestItems[0].Quality);
         }
@@ -59,9 +67,11 @@ namespace GuildedRoseKata.UnitTests
         {
             TestItems.Add(new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 15, Quality = 20 });
 
-            var service = new GildedRose(TestItems);
+            var mockData = new Mock<IItems>();
+            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
+            var controller = new DailyOperationController();
 
-            service.UpdateQuality();
+            controller.Post();
 
             Assert.AreEqual(21, TestItems[0].Quality);
         }
@@ -71,9 +81,11 @@ namespace GuildedRoseKata.UnitTests
         {
             TestItems.Add(new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 10, Quality = 20 });
 
-            var service = new GildedRose(TestItems);
+            var mockData = new Mock<IItems>();
+            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
+            var controller = new DailyOperationController();
 
-            service.UpdateQuality();
+            controller.Post();
 
             Assert.AreEqual(22, TestItems[0].Quality);
         }
@@ -83,9 +95,11 @@ namespace GuildedRoseKata.UnitTests
         {
             TestItems.Add(new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 5, Quality = 20 });
 
-            var service = new GildedRose(TestItems);
+            var mockData = new Mock<IItems>();
+            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
+            var controller = new DailyOperationController();
 
-            service.UpdateQuality();
+            controller.Post();
 
             Assert.AreEqual(23, TestItems[0].Quality);
         }
@@ -95,9 +109,11 @@ namespace GuildedRoseKata.UnitTests
         {
             TestItems.Add(new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 0, Quality = 20 });
 
-            var service = new GildedRose(TestItems);
+            var mockData = new Mock<IItems>();
+            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
+            var controller = new DailyOperationController();
 
-            service.UpdateQuality();
+            controller.Post();
 
             Assert.AreEqual(0, TestItems[0].Quality);
         }
@@ -108,9 +124,11 @@ namespace GuildedRoseKata.UnitTests
             TestItems.Add(new Item { Name = "Aged Brie", SellIn = 2, Quality = 50 });
             TestItems.Add(new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 15, Quality = 50 });
 
-            var service = new GildedRose(TestItems);
+            var mockData = new Mock<IItems>();
+            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
+            var controller = new DailyOperationController();
 
-            service.UpdateQuality();
+            controller.Post();
 
             Assert.AreEqual(50, TestItems[0].Quality);
             Assert.AreEqual(50, TestItems[1].Quality);
@@ -121,9 +139,11 @@ namespace GuildedRoseKata.UnitTests
         {
             TestItems.Add(new Item { Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7 });
 
-            var service = new GildedRose(TestItems);
+            var mockData = new Mock<IItems>();
+            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
+            var controller = new DailyOperationController();
 
-            service.UpdateQuality();
+            controller.Post();
 
             Assert.AreEqual(6, TestItems[0].Quality);
         }
@@ -133,64 +153,72 @@ namespace GuildedRoseKata.UnitTests
         {
             TestItems.Add(new Item { Name = "Elixir of the Mongoose", SellIn = 0, Quality = 7 });
 
-            var service = new GildedRose(TestItems);
+            var mockData = new Mock<IItems>();
+            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
+            var controller = new DailyOperationController();
 
-            service.UpdateQuality();
+            controller.Post();
 
             Assert.AreEqual(5, TestItems[0].Quality);
         }
 
-        //Commented out tests that we will be building into the system with the new enhancements 
-
-        //[TestMethod()]
+        [TestMethod()]
         public void ItemQualityNeverNegativeTest()
         {
             TestItems.Add(new Item { Name = "Elixir of the Mongoose", SellIn = 0, Quality = 0 });
             TestItems.Add(new Item { Name = "Elixir of the Mongoose", SellIn = 0, Quality = -5 });
 
-            var service = new GildedRose(TestItems);
+            var mockData = new Mock<IItems>();
+            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
+            var controller = new DailyOperationController();
 
-            service.UpdateQuality();
+            controller.Post();
 
             Assert.IsTrue(TestItems[0].Quality >= 0);
             Assert.IsTrue(TestItems[1].Quality >= 0);
         }
 
-        //[TestMethod()]
+        [TestMethod()]
         public void ItemQualityNeverAboveFiftyTest()
         {
             TestItems.Add(new Item { Name = "Elixir of the Mongoose", SellIn = 0, Quality = 75 });
             TestItems.Add(new Item { Name = "Aged Brie", SellIn = 0, Quality = 75 });
 
-            var service = new GildedRose(TestItems);
+            var mockData = new Mock<IItems>();
+            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
+            var controller = new DailyOperationController();
 
-            service.UpdateQuality();
+            controller.Post();
 
             Assert.IsTrue(TestItems[0].Quality <= 50);
             Assert.IsTrue(TestItems[1].Quality <= 50);
         }
 
 
-        //[TestMethod]
+        [TestMethod]
         public void ConjuredItemsDecreaseTwiceAsFast()
         {
             TestItems.Add(new Item { Name = "Conjured Mana Cake", SellIn = 3, Quality = 6 });
 
-            var service = new GildedRose(TestItems);
+            var mockData = new Mock<IItems>();
+            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
+            var controller = new DailyOperationController();
 
-            service.UpdateQuality();
+            controller.Post();
 
             Assert.AreEqual(4, TestItems[0].Quality);
         }
 
-        //[TestMethod]
+        [TestMethod]
         public void ConjuredItemsDecreaseTwiceAsFastAfterSellIn()
         {
             TestItems.Add(new Item { Name = "Conjured Mana Cake", SellIn = 0, Quality = 6 });
 
-            var service = new GildedRose(TestItems);
+            var mockData = new Mock<IItems>();
+            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
+            var controller = new DailyOperationController();
 
-            service.UpdateQuality();
+            controller.Post();
 
             Assert.AreEqual(2, TestItems[0].Quality);
         }

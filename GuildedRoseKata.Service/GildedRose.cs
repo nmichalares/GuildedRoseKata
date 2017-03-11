@@ -1,93 +1,54 @@
-﻿using GuildedRoseKata.Models;
-using System;
+﻿using GuildedRoseKata.Data.Interfaces;
+using GuildedRoseKata.Models;
+using GuildedRoseKata.Models.Extensions;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GuildedRoseKata.Service
 {
     public class GildedRose
     {
-        IList<Item> Items;
-        public GildedRose(IList<Item> Items)
+        private IItems _items;
+
+        public GildedRose()
         {
-            this.Items = Items;
+            _items = new Data.Items();
         }
 
-        public void UpdateQuality()
+        public List<ItemForSale> GetItems()
         {
-            for (var i = 0; i < Items.Count; i++)
+            return _items.LoadItems().Select(i => new ItemForSale(i.Name, i.SellIn, i.Quality)).ToList();
+        }
+
+        public void DailyOperation(ItemForSale item)
+        {
+            if (item.IsLegendary)
             {
-                if (Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
-                {
-                    if (Items[i].Quality > 0)
-                    {
-                        if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
-                        {
-                            Items[i].Quality = Items[i].Quality - 1;
-                        }
-                    }
-                }
-                else
-                {
-                    if (Items[i].Quality < 50)
-                    {
-                        Items[i].Quality = Items[i].Quality + 1;
+                return;
+            }
 
-                        if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert")
-                        {
-                            if (Items[i].SellIn < 11)
-                            {
-                                if (Items[i].Quality < 50)
-                                {
-                                    Items[i].Quality = Items[i].Quality + 1;
-                                }
-                            }
+            item.DecreaseSellIn();
 
-                            if (Items[i].SellIn < 6)
-                            {
-                                if (Items[i].Quality < 50)
-                                {
-                                    Items[i].Quality = Items[i].Quality + 1;
-                                }
-                            }
-                        }
-                    }
-                }
+            if (item.CanExpire && item.IsPastSellDate)
+            {
+                item.ResetItemQuality();
+                return;
+            }
 
-                if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
-                {
-                    Items[i].SellIn = Items[i].SellIn - 1;
-                }
+            if (item.IncreasesIncrementallyBetterTowardsSellIn)
+            {
+                item.HandleIncrementalQualityIncrease();
+            }
 
-                if (Items[i].SellIn < 0)
-                {
-                    if (Items[i].Name != "Aged Brie")
-                    {
-                        if (Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
-                        {
-                            if (Items[i].Quality > 0)
-                            {
-                                if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
-                                {
-                                    Items[i].Quality = Items[i].Quality - 1;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            Items[i].Quality = Items[i].Quality - Items[i].Quality;
-                        }
-                    }
-                    else
-                    {
-                        if (Items[i].Quality < 50)
-                        {
-                            Items[i].Quality = Items[i].Quality + 1;
-                        }
-                    }
-                }
+            if (item.GetsBetterWithAge)
+            {
+                item.UpdateIncreasedItemQuality();
+            }
+            else
+            {
+                item.UpdateDecreasedItemQuality();
             }
         }
-
     }
 }
 

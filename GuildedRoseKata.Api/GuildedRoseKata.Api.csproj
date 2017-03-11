@@ -17,5 +17,10 @@
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GuildedRoseKata.Data\GuildedRoseKata.Data.csproj" />
+    <ProjectReference Include="..\GuildedRoseKata.Models\GuildedRoseKata.Models.csproj" />
+    <ProjectReference Include="..\GuildedRoseKata.Service\GuildedRoseKata.Service.csproj" />
+  </ItemGroup>
 
 </Project>
