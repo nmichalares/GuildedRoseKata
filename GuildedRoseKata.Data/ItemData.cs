@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace GuildedRoseKata.Data
 {
-    public class Items : IItems
+    public class ItemData : IItemData
     {
         public List<Item> LoadItems()
         {

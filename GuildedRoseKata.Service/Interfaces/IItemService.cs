@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using GuildedRoseKata.Models;
 
-namespace GuildedRoseKata.Service
+namespace GuildedRoseKata.Service.Interfaces
 {
-    public interface IGildedRose
+    public interface IItemService
     {
         void DailyOperation(ItemForSale item);
         List<ItemForSale> GetItems();

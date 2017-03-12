@@ -1,18 +1,19 @@
 ﻿using GuildedRoseKata.Data.Interfaces;
 using GuildedRoseKata.Models;
 using GuildedRoseKata.Models.Extensions;
+using GuildedRoseKata.Service.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace GuildedRoseKata.Service
 {
-    public class GildedRose
+    public class ItemService : IItemService
     {
-        private IItems _items;
+        private IItemData _items;
 
-        public GildedRose()
+        public ItemService()
         {
-            _items = new Data.Items();
+            _items = new Data.ItemData();
         }
 
         public List<ItemForSale> GetItems()

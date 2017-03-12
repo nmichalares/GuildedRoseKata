@@ -3,7 +3,7 @@ using GuildedRoseKata.Models;
 
 namespace GuildedRoseKata.Data.Interfaces
 {
-    public interface IItems
+    public interface IItemData
     {
         List<Item> LoadItems();
     }
