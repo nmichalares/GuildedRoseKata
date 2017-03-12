@@ -1,13 +1,11 @@
-﻿using GuildedRoseKata.Data;
-using GuildedRoseKata.Models;
-using GuildedRoseKata.Service;
+﻿using GuildedRoseKata.Models;
 using GuildedRoseKata.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
 namespace GuildedRoseKata.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/dailyoperation")]
     public class DailyOperationController : Controller
     {
         public IItemService _itemsService;
@@ -16,9 +14,9 @@ namespace GuildedRoseKata.Api.Controllers
         {
             _itemsService = itemService;
         }
-
-        [HttpPost]
-        public List<ItemForSale> Post()
+        
+        [HttpGet]
+        public List<ItemForSale> Get()
         {
             var itemsForSale = _itemsService.GetItems();
 

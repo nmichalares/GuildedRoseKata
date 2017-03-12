@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>dc7fff30-95cb-4689-999f-f130b6930fec</ProjectGuid>
     <DockerLaunchBrowser>True</DockerLaunchBrowser>
-    <DockerServiceUrl>http://localhost:{ServicePort}/api/values</DockerServiceUrl>
+    <DockerServiceUrl>http://localhost:{ServicePort}/api/dailyoperation</DockerServiceUrl>
     <DockerServiceName>guildedrosekata.api</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>

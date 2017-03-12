@@ -176,7 +176,7 @@ namespace GuildedRoseKata.UnitTests
             var service = new ItemService(mockData.Object);
             var controller = new DailyOperationController(service);
 
-            var results = controller.Post();
+            var results = controller.Get();
             return results;
         }
     }
