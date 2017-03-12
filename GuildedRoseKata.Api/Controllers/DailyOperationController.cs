@@ -12,18 +12,13 @@ namespace GuildedRoseKata.Api.Controllers
     {
         public IItemService _itemsService;
 
-        public DailyOperationController()
+        public DailyOperationController(IItemService itemService)
         {
-            _itemsService = new ItemService();
-        }
-
-        public DailyOperationController(IItemService service)
-        {
-            _itemsService = service;
+            _itemsService = itemService;
         }
 
         [HttpPost]
-        public void Post()
+        public List<ItemForSale> Post()
         {
             var itemsForSale = _itemsService.GetItems();
 
@@ -31,6 +26,8 @@ namespace GuildedRoseKata.Api.Controllers
             {
                 _itemsService.DailyOperation(item);
             }
+
+            return itemsForSale;
         }
         
     }

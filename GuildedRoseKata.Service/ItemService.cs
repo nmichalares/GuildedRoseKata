@@ -9,16 +9,16 @@ namespace GuildedRoseKata.Service
 {
     public class ItemService : IItemService
     {
-        private IItemData _items;
+        private IItemData _itemData;
 
-        public ItemService()
+        public ItemService(IItemData itemData)
         {
-            _items = new Data.ItemData();
+            _itemData = itemData;
         }
 
         public List<ItemForSale> GetItems()
         {
-            return _items.LoadItems().Select(i => new ItemForSale(i.Name, i.SellIn, i.Quality)).ToList();
+            return _itemData.LoadItems().Select(i => new ItemForSale(i.Name, i.SellIn, i.Quality)).ToList();
         }
 
         public void DailyOperation(ItemForSale item)

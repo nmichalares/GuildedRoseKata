@@ -23,14 +23,10 @@ namespace GuildedRoseKata.UnitTests
         {
             TestItems.Add(new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80 });
 
-            var mockData = new Mock<IItemData>();
-            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
-            var controller = new DailyOperationController();
-            
-            controller.Post();
+            var results = BuildDailyOperationsMockAndReturnResults();
 
-            Assert.AreEqual(0, TestItems[0].SellIn);
-            Assert.AreEqual(80, TestItems[0].Quality);
+            Assert.AreEqual(0, results[0].SellIn);
+            Assert.AreEqual(80, results[0].Quality);
         }
 
         [TestMethod()]
@@ -38,14 +34,10 @@ namespace GuildedRoseKata.UnitTests
         {
             TestItems.Add(new Item { Name = "Aged Brie", SellIn = 2, Quality = 0 });
 
-            var mockData = new Mock<IItemData>();
-            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
-            var controller = new DailyOperationController();
+            var results = BuildDailyOperationsMockAndReturnResults();
 
-            controller.Post();
-
-            Assert.AreEqual(1, TestItems[0].Quality);
-            Assert.AreEqual(1, TestItems[0].SellIn);
+            Assert.AreEqual(1, results[0].Quality);
+            Assert.AreEqual(1, results[0].SellIn);
         }
 
         [TestMethod()]
@@ -53,13 +45,9 @@ namespace GuildedRoseKata.UnitTests
         {
             TestItems.Add(new Item { Name = "Aged Brie", SellIn = 0, Quality = 0 });
 
-            var mockData = new Mock<IItemData>();
-            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
-            var controller = new DailyOperationController();
+            var results = BuildDailyOperationsMockAndReturnResults();
 
-            controller.Post();
-
-            Assert.AreEqual(2, TestItems[0].Quality);
+            Assert.AreEqual(2, results[0].Quality);
         }
 
         [TestMethod()]
@@ -67,13 +55,9 @@ namespace GuildedRoseKata.UnitTests
         {
             TestItems.Add(new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 15, Quality = 20 });
 
-            var mockData = new Mock<IItemData>();
-            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
-            var controller = new DailyOperationController();
+            var results = BuildDailyOperationsMockAndReturnResults();
 
-            controller.Post();
-
-            Assert.AreEqual(21, TestItems[0].Quality);
+            Assert.AreEqual(21, results[0].Quality);
         }
 
         [TestMethod()]
@@ -81,13 +65,9 @@ namespace GuildedRoseKata.UnitTests
         {
             TestItems.Add(new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 10, Quality = 20 });
 
-            var mockData = new Mock<IItemData>();
-            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
-            var controller = new DailyOperationController();
+            var results = BuildDailyOperationsMockAndReturnResults();
 
-            controller.Post();
-
-            Assert.AreEqual(22, TestItems[0].Quality);
+            Assert.AreEqual(22, results[0].Quality);
         }
 
         [TestMethod()]
@@ -95,13 +75,9 @@ namespace GuildedRoseKata.UnitTests
         {
             TestItems.Add(new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 5, Quality = 20 });
 
-            var mockData = new Mock<IItemData>();
-            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
-            var controller = new DailyOperationController();
+            var results = BuildDailyOperationsMockAndReturnResults();
 
-            controller.Post();
-
-            Assert.AreEqual(23, TestItems[0].Quality);
+            Assert.AreEqual(23, results[0].Quality);
         }
 
         [TestMethod()]
@@ -109,13 +85,9 @@ namespace GuildedRoseKata.UnitTests
         {
             TestItems.Add(new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 0, Quality = 20 });
 
-            var mockData = new Mock<IItemData>();
-            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
-            var controller = new DailyOperationController();
+            var results = BuildDailyOperationsMockAndReturnResults();
 
-            controller.Post();
-
-            Assert.AreEqual(0, TestItems[0].Quality);
+            Assert.AreEqual(0, results[0].Quality);
         }
 
         [TestMethod()]
@@ -124,14 +96,10 @@ namespace GuildedRoseKata.UnitTests
             TestItems.Add(new Item { Name = "Aged Brie", SellIn = 2, Quality = 50 });
             TestItems.Add(new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 15, Quality = 50 });
 
-            var mockData = new Mock<IItemData>();
-            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
-            var controller = new DailyOperationController();
+            var results = BuildDailyOperationsMockAndReturnResults();
 
-            controller.Post();
-
-            Assert.AreEqual(50, TestItems[0].Quality);
-            Assert.AreEqual(50, TestItems[1].Quality);
+            Assert.AreEqual(50, results[0].Quality);
+            Assert.AreEqual(50, results[1].Quality);
         }
 
         [TestMethod()]
@@ -139,13 +107,9 @@ namespace GuildedRoseKata.UnitTests
         {
             TestItems.Add(new Item { Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7 });
 
-            var mockData = new Mock<IItemData>();
-            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
-            var controller = new DailyOperationController();
+            var results = BuildDailyOperationsMockAndReturnResults();
 
-            controller.Post();
-
-            Assert.AreEqual(6, TestItems[0].Quality);
+            Assert.AreEqual(6, results[0].Quality);
         }
 
         [TestMethod()]
@@ -153,13 +117,9 @@ namespace GuildedRoseKata.UnitTests
         {
             TestItems.Add(new Item { Name = "Elixir of the Mongoose", SellIn = 0, Quality = 7 });
 
-            var mockData = new Mock<IItemData>();
-            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
-            var controller = new DailyOperationController();
+            var results = BuildDailyOperationsMockAndReturnResults();
 
-            controller.Post();
-
-            Assert.AreEqual(5, TestItems[0].Quality);
+            Assert.AreEqual(5, results[0].Quality);
         }
 
         [TestMethod()]
@@ -168,14 +128,10 @@ namespace GuildedRoseKata.UnitTests
             TestItems.Add(new Item { Name = "Elixir of the Mongoose", SellIn = 0, Quality = 0 });
             TestItems.Add(new Item { Name = "Elixir of the Mongoose", SellIn = 0, Quality = -5 });
 
-            var mockData = new Mock<IItemData>();
-            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
-            var controller = new DailyOperationController();
+            var results = BuildDailyOperationsMockAndReturnResults();
 
-            controller.Post();
-
-            Assert.IsTrue(TestItems[0].Quality >= 0);
-            Assert.IsTrue(TestItems[1].Quality >= 0);
+            Assert.IsTrue(results[0].Quality >= 0);
+            Assert.IsTrue(results[1].Quality >= 0);
         }
 
         [TestMethod()]
@@ -184,14 +140,10 @@ namespace GuildedRoseKata.UnitTests
             TestItems.Add(new Item { Name = "Elixir of the Mongoose", SellIn = 0, Quality = 75 });
             TestItems.Add(new Item { Name = "Aged Brie", SellIn = 0, Quality = 75 });
 
-            var mockData = new Mock<IItemData>();
-            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
-            var controller = new DailyOperationController();
+            var results = BuildDailyOperationsMockAndReturnResults();
 
-            controller.Post();
-
-            Assert.IsTrue(TestItems[0].Quality <= 50);
-            Assert.IsTrue(TestItems[1].Quality <= 50);
+            Assert.IsTrue(results[0].Quality <= 50);
+            Assert.IsTrue(results[1].Quality <= 50);
         }
 
 
@@ -200,13 +152,9 @@ namespace GuildedRoseKata.UnitTests
         {
             TestItems.Add(new Item { Name = "Conjured Mana Cake", SellIn = 3, Quality = 6 });
 
-            var mockData = new Mock<IItemData>();
-            mockData.Setup(x => x.LoadItems()).Returns(TestItems);
-            var controller = new DailyOperationController();
+            var results = BuildDailyOperationsMockAndReturnResults();
 
-            controller.Post();
-
-            Assert.AreEqual(4, TestItems[0].Quality);
+            Assert.AreEqual(4, results[0].Quality);
         }
 
         [TestMethod]
@@ -214,13 +162,22 @@ namespace GuildedRoseKata.UnitTests
         {
             TestItems.Add(new Item { Name = "Conjured Mana Cake", SellIn = 0, Quality = 6 });
 
+            var results = BuildDailyOperationsMockAndReturnResults();
+
+            Assert.AreEqual(2, results[0].Quality);
+        }
+
+        //Test Helpers
+
+        private List<ItemForSale> BuildDailyOperationsMockAndReturnResults()
+        {
             var mockData = new Mock<IItemData>();
             mockData.Setup(x => x.LoadItems()).Returns(TestItems);
-            var controller = new DailyOperationController();
+            var service = new ItemService(mockData.Object);
+            var controller = new DailyOperationController(service);
 
-            controller.Post();
-
-            Assert.AreEqual(2, TestItems[0].Quality);
+            var results = controller.Post();
+            return results;
         }
     }
 }

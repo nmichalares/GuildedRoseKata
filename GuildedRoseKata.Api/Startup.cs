@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using GuildedRoseKata.Data;
+using GuildedRoseKata.Data.Interfaces;
+using GuildedRoseKata.Service;
+using GuildedRoseKata.Service.Interfaces;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +27,10 @@ namespace GuildedRoseKata.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Inject Dependencies
+            services.AddTransient<IItemService, ItemService>();
+            services.AddTransient<IItemData, ItemData>();
+
             // Add framework services.
             services.AddMvc();
         }
